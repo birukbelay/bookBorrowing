@@ -4,6 +4,8 @@ import 'package:carousel_pro/carousel_pro.dart';
 //my imports
 import 'package:flutter_proj_n/components/horizontal_listview.dart';
 import 'package:flutter_proj_n/components/books.dart';
+import 'package:flutter_proj_n/components/drawer.dart';
+import 'package:flutter_proj_n/pages/borrowed.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -23,6 +25,7 @@ class HomePages extends StatefulWidget {
 class _HomePagesState extends State<HomePages> {
   @override
   Widget build(BuildContext context) {
+
     Widget image_carousel = new Container(
         height: 150.0,
         child: new Carousel(
@@ -36,13 +39,14 @@ class _HomePagesState extends State<HomePages> {
           autoplay: false,
           animationCurve: Curves.fastOutSlowIn,
           animationDuration: Duration(milliseconds: 1000),
-          dotSize: 8.0,
-          indicatorBgPadding: 10.0,
-          dotColor: Colors.lightBlueAccent,
+          dotSize: 6.0,
+          indicatorBgPadding: 2.0,
+          dotBgColor: Colors.transparent,
         ));
 
     return Scaffold(
         appBar: new AppBar(
+
           elevation: 0.1,
           title: Center(child: Text('myApp')),
           actions: <Widget>[
@@ -57,69 +61,13 @@ class _HomePagesState extends State<HomePages> {
                   Icons.book,
                   color: Colors.white,
                 ),
-                onPressed: () {}),
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>new Borrowed()));
+                }),
           ],
         ),
         drawer: new Drawer(
-            child: new ListView(
-          children: <Widget>[
-//            header
-
-            new UserAccountsDrawerHeader(
-                accountName: Text('bura'),
-                accountEmail: Text('belay.bura@gmail.com'),
-                currentAccountPicture: new GestureDetector(
-                  child: new CircleAvatar(
-                      backgroundColor: Colors.red,
-                      child: Icon(
-                        Icons.person,
-                        color: Colors.white,
-                      )),
-                ),
-                decoration: new BoxDecoration(color: Colors.red)),
-
-//            body
-            InkWell(
-              onTap: () {},
-              child:
-                  ListTile(title: Text('home page'), leading: Icon(Icons.home)),
-            ),
-
-            InkWell(
-              onTap: () {},
-              child:
-                  ListTile(title: Text('home page'), leading: Icon(Icons.home)),
-            ),
-
-            InkWell(
-              onTap: () {},
-              child: ListTile(
-                  title: Text('books'), leading: Icon(Icons.library_books)),
-            ),
-
-            InkWell(
-              onTap: () {},
-              child: ListTile(
-                  title: Text('Time Left'), leading: Icon(Icons.timer)),
-            ),
-
-            Divider(),
-
-            InkWell(
-              onTap: () {},
-              child: ListTile(
-                  title: Text('Settings'),
-                  leading: Icon(Icons.settings, color: Colors.blue)),
-            ),
-
-            InkWell(
-              onTap: () {},
-              child: ListTile(
-                  title: Text('help'),
-                  leading: Icon(Icons.help, color: Colors.green)),
-            ),
-          ],
-        )),
+            child: DrawerToggle(),),
 
 //        body
         body: new ListView(children: <Widget>[
@@ -139,9 +87,19 @@ class _HomePagesState extends State<HomePages> {
           ),
 //grid view
           Container(
-            height: 300,
+            height: 400,
             child: Books(),
-          )
+          ),
+
+
+          new Padding(
+            padding: const EdgeInsets.all(6.0),
+            child: new Text('New Books'),
+          ),
+          Container(
+            height: 400,
+            child: Books(),
+          ),
         ]));
   }
 }

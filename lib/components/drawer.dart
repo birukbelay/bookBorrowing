@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:flutter_proj_n/pages/borrowed.dart';
+
 class DrawerToggle extends StatefulWidget {
   @override
   _DrawerToggleState createState() => _DrawerToggleState();
@@ -8,11 +10,10 @@ class DrawerToggle extends StatefulWidget {
 class _DrawerToggleState extends State<DrawerToggle> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-        child: new ListView(
+    return ListView(
           children: <Widget>[
 
-//            header
+//            =======  header ========
 
             new UserAccountsDrawerHeader(
                 accountName: Text('bura'), accountEmail: Text('belay.bura@gmail.com'),
@@ -37,11 +38,15 @@ class _DrawerToggleState extends State<DrawerToggle> {
               ),
             ),
 
+//          ====borrowed=====
+
             InkWell(
-              onTap:(){},
+              onTap:(){
+                Navigator.push(context, MaterialPageRoute(builder: (context)=> new Borrowed()));
+              },
               child: ListTile(
-                  title: Text('home page'),
-                  leading:Icon(Icons.home)
+                  title: Text('borrowed'),
+                  leading:Icon(Icons.history)
 
               ),
             ),
@@ -85,7 +90,7 @@ class _DrawerToggleState extends State<DrawerToggle> {
 
 
           ],
-        )
-    );
+        );
+
   }
 }

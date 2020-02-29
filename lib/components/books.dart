@@ -6,33 +6,67 @@ class Books extends StatefulWidget {
   _BooksState createState() => _BooksState();
 }
 
+
+var book_list = [
+  {
+    "name": "bible",
+    "picture": "images/1.jpg",
+    "old_price": 23,
+    "price": 12,
+  },
+  {
+    "name": "myles",
+    "picture": "images/2.jpg",
+    "old_price": 10,
+    "price": 200,
+  },
+  {
+    "name": "billy",
+    "picture": "images/3.jpg",
+    "old_price": 20,
+    "price": 200,
+  },
+  {
+    "name": "yoni",
+    "picture": "images/4.jpg",
+    "old_price": 50,
+    "price": 20,
+  },
+  {
+    "name": "yoni",
+    "picture": "images/5.jpg",
+    "old_price": 50,
+    "price": 20,
+  },
+  {
+    "name": "yoni",
+    "picture": "images/6.jpg",
+    "old_price": 50,
+    "price": 20,
+  },
+  {
+    "name": "yoni",
+    "picture": "images/7.jpg",
+    "old_price": 50,
+    "price": 20,
+  },
+  {
+    "name": "yoni",
+    "picture": "images/8.jpg",
+    "old_price": 50,
+    "price": 20,
+  }, {
+    "name": "yoni",
+    "picture": "images/9.jpg",
+    "old_price": 50,
+    "price": 20,
+  },
+
+];
+
 class _BooksState extends State<Books> {
-  var book_list = [
-    {
-      "name": "bible",
-      "picture": "images/1.jpg",
-      "old_price": 23,
-      "price": 12,
-    },
-    {
-      "name": "myles",
-      "picture": "images/2.jpg",
-      "old_price": 10,
-      "price": 200,
-    },
-    {
-      "name": "billy",
-      "picture": "images/3.jpg",
-      "old_price": 20,
-      "price": 200,
-    },
-    {
-      "name": "yoni",
-      "picture": "images/4.jpg",
-      "old_price": 50,
-      "price": 20,
-    },
-  ];
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -68,7 +102,7 @@ class Single_Book extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       child: Hero(
-          tag: book_name,
+          tag: new Text(".."),
           child: Material(
             child: InkWell(
               onTap: () => Navigator.of(context).push(new MaterialPageRoute(
@@ -79,9 +113,10 @@ class Single_Book extends StatelessWidget {
                         book_detail_price: book_price,
                       ))),
               child: GridTile(
+
                   footer: Container(
-                    height: 30,
-                    color: Colors.white70,
+                    height: 60,
+                    color: Colors.white60 ,
                     child: ListTile(
                       leading: Text(
                         book_name,
