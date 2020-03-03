@@ -96,10 +96,17 @@ class _HomePagesState extends State<HomePages> {
             padding: const EdgeInsets.all(6.0),
             child: new Text('New Books'),
           ),
+
           Container(
             height: 400,
             child: Books(),
           ),
+
+          new Padding(
+            padding: const EdgeInsets.all(6.0),
+            child: new Text('New Books'),
+          ),
+
         ]));
   }
 }
